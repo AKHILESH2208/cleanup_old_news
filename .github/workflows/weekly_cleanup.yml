@@ -22,10 +22,9 @@ jobs:
       run: |
         pip install firebase-admin python-dateutil
 
-    - name: Write Firebase credentials to file
+    - name: Write Firebase credentials from base64 secret
       run: |
-        printf '%s' "${{ secrets.FIREBASE_CREDENTIALS_JSON }}" > serviceAccountKey.json
-
+        echo "${{ secrets.FIREBASE_CREDENTIALS_B64 }}" | base64 --decode > serviceAccountKey.json
 
     - name: Run cleanup script
       run: |
