@@ -24,7 +24,8 @@ jobs:
 
     - name: Write Firebase credentials to file
       run: |
-        echo "${{ secrets.FIREBASE_CREDENTIALS_JSON }}" > serviceAccountKey.json
+        printf '%s' "${{ secrets.FIREBASE_CREDENTIALS_JSON }}" > serviceAccountKey.json
+
 
     - name: Run cleanup script
       run: |
